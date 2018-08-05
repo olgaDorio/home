@@ -1,0 +1,41 @@
+.button {
+  align-items: center;
+  appearance: initial;
+  background: transparent;
+  border: initial;
+  box-shadow: initial;
+  box-sizing: border-box;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  justify-content: center;
+  margin: initial;
+  outline: initial;
+  pointer-events: auto;
+  text-decoration: initial;
+  text-transform: capitalize;
+  box-sizing: border-box;
+  transition: all 0.2s;
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.2;
+  }
+
+  &--filter {
+    background: $cream;
+    color: black;
+    border-radius: 20px;
+    padding: 8px 15px;
+  }
+
+  &--active,
+  &--filter:hover {
+    background: $yellow;
+  }
+
+  &--filter + &--filter {
+    margin-left: 10px;
+  }
+}

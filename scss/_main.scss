@@ -1,0 +1,121 @@
+// .main
+//   .greeting Привет, Геннадий
+//   .temperature +19 +23
+//   .planned
+//     .card
+//       svg.icon
+//         use(xlink:href="#temperature")
+//       .card_title Philips Cooler
+//       .card__subtitle Начнет охлаждать в 16:30
+
+// TODO separate by files
+
+.main {
+  background-image: url(https://images.pexels.com/photos/1092364/pexels-photo-1092364.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+
+  background-size: cover;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 25px 25px 0 25px;
+  box-sizing: border-box;
+  height: 335px;
+
+  @include tablet {
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    height: 100%;
+  }
+}
+
+.greeting {
+  min-height: 52px;
+  width: 50%;
+  font-family: Arial-BoldMT;
+  font-size: 27px;
+  color: #333333;
+
+  @include tablet {
+    width: 100%;
+    height: auto;
+  }
+
+  &__info {
+    font-family: ArialMT;
+    font-size: 14px;
+  }
+}
+
+.temperature {
+  &__wrapper {
+    width: 50%;
+    margin-top: 25px;
+    display: flex;
+  }
+
+  @include tablet {
+    &__wrapper {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__block + &__block {
+    margin-left: 18px;
+  }
+
+  &__location {
+    font-family: ArialMT;
+    font-size: 14px;
+    color: #858585;
+  }
+
+  &__value {
+    font-family: Arial-BoldMT;
+    font-size: 36px;
+    color: #333333;
+    display: inline;
+    margin-right: 5px;
+  }
+}
+
+.planned {
+  @include tablet {
+    width: 100%;
+    height: 120px;
+  }
+
+  width: 200px;
+  height: 310px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__container {
+    overflow: auto;
+    display: grid;
+    grid-gap: 15px;
+    grid-auto-flow: row;
+    height: 270px;
+
+    @include tablet {
+      height: 120px;
+      grid-auto-flow: column;
+    }
+  }
+
+  &__trigger {
+    @include tablet {
+      display: none;
+    }
+
+    height: 40px;
+    width: 100%;
+    background: #F7F7F7;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    justify-content: center;
+  }
+}

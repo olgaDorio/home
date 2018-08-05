@@ -1,0 +1,13 @@
+.link {
+  color: inherit;
+  text-decoration: inherit;
+
+  &:active,
+  &:focus {
+    color: $black;
+  }
+
+  & + & {
+    margin-left: 30px;
+  }
+}

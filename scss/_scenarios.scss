@@ -1,0 +1,37 @@
+// .scenarios__wrapper
+  // .title
+  //   | Избранные сценарии
+  //   .scenarios__controls
+  //     button.button <
+  //     button.button >
+  // .scenarios
+  //   .card blablabla
+  //   .card blablabla
+  //   .card blablabla
+  //   .card blablabla
+  //   .card blablabla
+  //   .card blablabla
+
+.scenarios {
+  &__controls {
+    margin-left: auto;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  grid-auto-flow: column;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: 100%;
+  grid-auto-columns: 200px;
+  grid-gap: 15px;
+  padding: 3px;
+  display: grid;
+  overflow: auto;
+  box-sizing: border-box;
+
+  @include tablet {
+    grid-template-rows: auto;
+  }
+}

@@ -1,0 +1,37 @@
+//     .card
+//       svg.icon
+//         use(xlink:href="#temperature")
+//       .card__title Philips Cooler
+//       .card__subtitle Начнет охлаждать в 16:30
+
+.card {
+  background: #F7F7F7;
+  border-radius: 20px;
+  width: 200px;
+  min-width: 200px;
+  height: 120px;
+  min-height: 120px;
+
+  &--small {
+    height: 100px;
+    min-height: 100px;
+  }
+
+  &--active {
+    background: #FFFFFF;
+    box-shadow: 0 2px 6px 0 rgba(197,186,186,0.50);
+    border-radius: 20px;
+  }
+
+  &__title {
+    font-family: Arial-BoldMT;
+    font-size: 14px;
+    color: #333333;
+  }
+
+  &__subtitle {
+    font-family: ArialMT;
+    font-size: 12px;
+    color: #858585;
+  }
+}

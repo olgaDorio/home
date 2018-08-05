@@ -1,0 +1,22 @@
+{
+  "extends": "airbnb-base",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "html"
+  ],
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "apiUrl": true
+  },
+  "rules": {
+    "no-multiple-empty-lines": ["error", {
+      "max": 1
+    }]
+  }
+}

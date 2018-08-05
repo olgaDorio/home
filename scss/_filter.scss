@@ -1,0 +1,24 @@
+.filter {
+  margin-left: 13px;
+
+  display: block; // or not
+
+  font-family: Arial-BoldMT;
+  font-size: 13px;
+  color: #000000;
+
+  @include tablet {
+    display: none;
+  }
+
+  &--mobile {
+    display: none;
+  }
+
+  @include tablet {
+    &--mobile {
+      margin-left: auto;
+      display: block;
+    }
+  }
+}

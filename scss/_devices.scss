@@ -1,0 +1,19 @@
+.devices {
+  &__controls {
+    margin-left: auto;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  grid-auto-flow: column;
+  width: 100%;
+  grid-auto-columns: 200px;
+  grid-gap: 15px;
+  padding: 3px;
+  display: grid;
+  overflow: auto;
+  box-sizing: border-box;
+  grid-template-rows: auto;
+}

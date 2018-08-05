@@ -1,0 +1,107 @@
+@import "_variables.scss";
+@import "_block.v2.scss";
+@import "_icon.scss";
+@import "_main.scss";
+@import "_button.scss";
+@import "_card.scss";
+@import "_title.scss";
+@import "_scenarios.scss";
+@import "_filter.scss";
+@import "_devices.scss";
+
+body {
+  margin: 0;
+  height: 100vh;
+
+  @include tablet {
+    min-height: 100vh;
+    height: 100%;
+    overflow: auto;
+  }
+}
+
+.separate {
+  margin-left: auto !important;
+}
+
+.header {
+  z-index: 2;
+  background: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 90px;
+  padding: 0 40px;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+  border-bottom: 1px solid #F0F0F0;
+}
+
+
+.logo {
+  width: 108px;
+  height: 27px;
+  background-size: cover;
+  background-image: url(./../images/logo.png);
+  margin-right: 26px; // TODO: think about improving this by giving them same parent class
+}
+
+.link {
+  margin-left: 26px; // TODO: think about improving this by giving them same parent class
+}
+
+.navigation:not(.navigation--mobile) {
+  display: contents;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.navigation--mobile {
+  display: none;
+  margin-left: auto;
+  position: relative;
+
+  @include mobile {
+    display: block;
+  }
+}
+
+.navigation--mobile:not(.navigation--hidden) .navigation {
+  @include mobile {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    background: red;
+  }
+}
+
+.copyright {
+  margin-left: auto;
+}
+
+.footer {
+
+  display: flex;
+  align-items: center;
+
+  height: 100px;
+  padding: 0 40px;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  @include tablet {
+    position: relative;
+  }
+}
