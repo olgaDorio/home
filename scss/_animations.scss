@@ -1,0 +1,70 @@
+@keyframes appear {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-from-right {
+  from, to {
+    transform: translateX(0);
+  }
+
+  1% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes slide-from-left {
+  from, to {
+    transform: translateX(0);
+  }
+
+  1% {
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes slide-from-top {
+  from, to {
+    transform: translateY(0);
+  }
+
+  1% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes slide-from-bottom {
+  from, to {
+    transform: translateY(0);
+  }
+
+  1% {
+    transform: translateY(10px);
+  }
+}
+
+.appear {
+  animation: appear 0.2s;
+}
+
+.fromright {
+  animation: slide-from-right cubic-bezier(0, 1.94, 1,-1.6) 0.2s;
+}
+
+.fromleft {
+  animation: slide-from-left cubic-bezier(0, 1.94, 1,-1.6) 0.2s;
+}
+
+.fromtop {
+  animation: slide-from-top cubic-bezier(0, 1.94, 1,-1.6) 0.2s;
+}
+
+.frombottom {
+  animation: slide-from-bottom cubic-bezier(0, 1.94, 1,-1.6) 0.2s;
+}
+

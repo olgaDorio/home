@@ -1,0 +1,42 @@
+// .popup
+//   .popup__body
+//   .popup__actions
+//     button.button Применить
+//     button.button Закрыть
+
+.popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  background: rgba(51,51,51,0.50);
+  z-index: 3;
+
+  &__body,
+  &__actions {
+    width: 100%;
+    max-width: 630px;
+  }
+
+  &__body {
+    background: white;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 20px;
+  }
+
+  &__actions {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 16px;
+    height: 60px;
+  }
+}

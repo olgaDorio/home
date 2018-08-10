@@ -2,6 +2,10 @@
   width: 100%;
   box-sizing: border-box;
 
+  // oh dear god
+  // >>>>>>>>>>>
+
+
   &:nth-child(1) {
     padding-right: 13px;
     padding-bottom: 29px;
@@ -18,6 +22,8 @@
       padding-bottom: 31px;
     }
   }
+
+  // <<<<<<<<<<<
 
   &__wrapper {
     display: flex;
@@ -37,6 +43,7 @@
       margin-top: 90px;
       height: 100%;
       top: 0;
+      padding: 20px 20px 0 20px;
     }
   }
 

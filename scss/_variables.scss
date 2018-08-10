@@ -9,8 +9,15 @@ $black: #333333;
 
 $yellow: #FFD93E;
 
+$small-desktop: 1370px;
 $tablet-width: 890px; // it will be better in 890px 768px
 $mobile-width: 520px;
+
+@mixin small-desktop {
+  @media screen and (max-width: $small-desktop) {
+    @content;
+  }
+}
 
 @mixin tablet {
   @media screen and (max-width: $tablet-width) {

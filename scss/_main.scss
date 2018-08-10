@@ -1,17 +1,9 @@
-// .main
-//   .greeting Привет, Геннадий
-//   .temperature +19 +23
-//   .planned
-//     .card
-//       svg.icon
-//         use(xlink:href="#temperature")
-//       .card_title Philips Cooler
-//       .card__subtitle Начнет охлаждать в 16:30
-
 // TODO separate by files
 
 .main {
   background-image: url(https://images.pexels.com/photos/1092364/pexels-photo-1092364.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  border-radius: 20px;
+  overflow: hidden;
 
   background-size: cover;
 
@@ -94,15 +86,19 @@
   justify-content: space-between;
 
   &__container {
-    overflow: auto;
+    overflow: hidden;
     display: grid;
     grid-gap: 15px;
     grid-auto-flow: row;
     height: 270px;
+    padding-bottom: 15px;
+    box-sizing: border-box;
 
     @include tablet {
+      overflow: auto;
       height: 120px;
       grid-auto-flow: column;
+      padding-bottom: 0;
     }
   }
 

@@ -13,7 +13,11 @@
   grid-gap: 15px;
   padding: 3px;
   display: grid;
-  overflow: auto;
+  overflow: hidden;
   box-sizing: border-box;
   grid-template-rows: auto;
+
+  @include tablet {
+    overflow: auto;
+  }
 }

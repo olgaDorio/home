@@ -6,22 +6,27 @@ head
 
   title Яндекс Дом
 body
+  .popup
+    .popup__body
+    .popup__actions
+      button.button.button--yellow.button--round Применить
+      button.button.button--white.button--round Закрыть
+
   include icons.pug
   header.header
     .logo
     nav.navigation
-      a.link Сводка
-      a.link Устройства
-      a.link Сценарии
-    //- should display only on mobile
-    .navigation--mobile.navigation--hidden
-      button.button.navigation__trigger
-        svg.icon.icon--small
-          use(xlink:href='#list')
-      nav.navigation
-        a.link Сводка
-        a.link Устройства
-        a.link Сценарии
+      a.link(href="#") Сводка
+      a.link(href="#") Устройства
+      a.link(href="#") Сценарии
+
+    button.button.navigation__trigger
+      svg.icon.icon--small
+        use(xlink:href='#list')
+    nav.navigation.navigation--mobile.navigation--hidden
+      a.link(href="#") Сводка
+      a.link(href="#") Устройства
+      a.link(href="#") Сценарии
 
   main.block__wrapper
     .block.block--50
@@ -41,62 +46,35 @@ body
               use(xlink:href="#cloud")
         .planned
           .planned__container
-            .card
-              svg.icon
-                use(xlink:href="#temperature")
-              .card__title Philips Cooler
-              .card__subtitle Начнет охлаждать в 16:30
-            .card
-              svg.icon
-                use(xlink:href="#sun")
-              .card__title Xiaomi Yeelight LED Smart Bulb
-              .card__subtitle Включится в 17:00
-            .card
-              svg.icon
-                use(xlink:href="#temperature")
-              .card__title Clone - Philips Cooler
-              .card__subtitle Начнет охлаждать в 16:30
-            .card
-              svg.icon
-                use(xlink:href="#sun")
-              .card__title Clone - Xiaomi Yeelight LED Smart Bulb
-              .card__subtitle Включится в 17:00
+            //- cards will mount here
+
           .planned__trigger
             button.button
               svg.icon
-                use(xlink:href="#temperature")
+                use(xlink:href="#arrow")
 
     .block.block--50
       .title
         | Избранные сценарии
         .scenarios__controls
-          button.button <
-          button.button >
+          button.button
+            svg.icon.icon--medium
+              use(xlink:href="#left")
+          button.button
+            svg.icon.icon--medium
+              use(xlink:href="#right")
       .scenarios
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
+        //- cards will mount here
 
     .block
       .title
         | Избранные устройства
         .filter
-          button.button.button--filter Все
-          button.button.button--filter Кухня
-          button.button.button--filter Зал
-          button.button.button--filter.button--active Лампочки
-          button.button.button--filter Камеры
+          button.button.button--filter.button--active(data-name="all") Все
+          button.button.button--filter(data-name="kitchen") Кухня
+          button.button.button--filter(data-name="livingRoom") Зал
+          button.button.button--filter(data-name="lights") Лампочки
+          button.button.button--filter(data-name="cameras") Камеры
         //- TODO
         select.filter--mobile(hidden)
           option Все
@@ -105,31 +83,21 @@ body
           option Лампочки
           option Камеры
         .devices__controls
-          button.button <
-          button.button >
+          button.button
+            svg.icon.icon--medium
+              use(xlink:href="#left")
+          button.button
+            svg.icon.icon--medium
+              use(xlink:href="#right")
       .devices
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-        .card.card--small blablabla
-
-
+        //- cards will mount here
 
   footer.footer
     nav.navigation
-      a.link Помощь
-      a.link Обратная связь
-      a.link Разработчикам
-      a.link Условия использования
+      a.link(href="#") Помощь
+      a.link(href="#") Обратная связь
+      a.link(href="#") Разработчикам
+      a.link(href="#") Условия использования
     .copyright © 2001–2017  ООО «Яндекс»
+
 
