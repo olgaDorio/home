@@ -10,9 +10,6 @@ module.exports = {
     node.classList.remove('fromleft');
     node.classList.remove('fromtop');
     node.classList.remove('frombottom');
-
-    // caution, magic
-    // https://css-tricks.com/restart-css-animation/
     void node.offsetWidth; // eslint-disable-line
   },
 };

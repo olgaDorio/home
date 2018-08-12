@@ -6,10 +6,11 @@ module.exports = (container, data, animationName) => {
     container.removeChild(container.firstChild);
   }
 
-  data.forEach((object) => {
+  return data.map((object) => {
     const node = createCard(object);
     if (animationName) animate[animationName](node);
 
     container.appendChild(node);
+    return container.lastElementChild;
   });
 };

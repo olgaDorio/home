@@ -1,5 +1,6 @@
-import mountNodes from './mountNodes';
-import animate from './animate';
+import createPopup from './popup';
+import mountNodes from './utils/mountNodes';
+import animate from './utils/animate';
 
 module.exports = (data, container, parent) => {
   const nextPageButton = container.querySelector('.devices__controls .button:last-child');
@@ -23,7 +24,7 @@ module.exports = (data, container, parent) => {
     const edge = parent.scrollWidth;
     const value = Math.min(edge, newval);
 
-    parent.scrollLeft = value;
+    parent.scrollLeft = value; // eslint-disable-line no-param-reassign
 
     [...parent.children].forEach((child) => {
       animate.reset(child);
@@ -70,8 +71,24 @@ module.exports = (data, container, parent) => {
     checkPaginationButtons();
   };
 
-  mountNodes(parent, data);
+  const initPopup = (card) => {
+    const { title, subtitle, value, min, max } = card;
+    const sunny = card.icon.includes('sun')
+
+    createPopup({
+      title, subtitle, sunny, value, min, max,
+    });
+  };
+
+  const cards = mountNodes(parent, data);
   checkPaginationButtons();
+
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const index = cards.indexOf(card);
+      initPopup(data[index]); // TODO get from data
+    });
+  });
 
   nextPageButton.addEventListener('click', goForward);
   prevPageButton.addEventListener('click', goBack);

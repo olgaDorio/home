@@ -1,5 +1,5 @@
-import mountNodes from './mountNodes';
-import animate from './animate';
+import mountNodes from './utils/mountNodes';
+import animate from './utils/animate';
 
 module.exports = (data, container, parent) => {
   let down = true;
@@ -21,7 +21,7 @@ module.exports = (data, container, parent) => {
       down = true;
     }
 
-    parent.scrollTop = down ? scrollTop + 135 : scrollTop - 135;
+    parent.scrollTop = down ? scrollTop + 135 : scrollTop - 135; // eslint-disable no-param-reassign
 
     [...parent.children].forEach((child) => {
       animate.reset(child);

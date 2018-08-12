@@ -1,5 +1,5 @@
-import mountNodes from './mountNodes';
-import animate from './animate';
+import mountNodes from './utils/mountNodes';
+import animate from './utils/animate';
 
 module.exports = (data, container, parent) => {
   const prevButton = container.querySelector('.scenarios__controls .button:nth-child(1)');
@@ -29,14 +29,14 @@ module.exports = (data, container, parent) => {
   };
 
   const onPrevButtonClick = () => {
-    const { scrollTop, offsetHeight } = parent;
+    const { scrollTop } = parent;
     parent.scrollTop = scrollTop - scrollStep;
     animateChildren('fromright');
     checkButtons();
   };
 
   const onNextButtonClick = () => {
-    const { scrollTop, offsetHeight } = parent;
+    const { scrollTop } = parent;
     parent.scrollTop = scrollTop + scrollStep;
     animateChildren('fromleft');
     checkButtons();

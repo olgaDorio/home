@@ -108,6 +108,9 @@ module.exports = {
 
   devicesData: [
     {
+      value: 0.3,
+      min: 0,
+      max: 1,
       cardType: 'small',
       filterType: 'lights',
       icon: 'sun2',
@@ -115,6 +118,9 @@ module.exports = {
       subtitle: 'Включено',
     },
     {
+      value: 0.3,
+      min: 0,
+      max: 1,
       cardType: 'small',
       filterType: 'cameras',
       icon: 'sun',
@@ -122,6 +128,9 @@ module.exports = {
       subtitle: 'Включится в 17:00',
     },
     {
+      min: -10,
+      max: 30,
+      value: 20,
       cardType: 'small',
       filterType: 'kitchen',
       icon: 'temperature',
@@ -129,6 +138,9 @@ module.exports = {
       subtitle: 'Выключено до 17:00',
     },
     {
+      value: 0.3,
+      min: 0,
+      max: 1,
       cardType: 'small',
       filterType: 'lights',
       icon: 'sun',
@@ -136,6 +148,9 @@ module.exports = {
       subtitle: 'Включится в 17:00',
     },
     {
+      value: 0.3,
+      min: 0,
+      max: 1,
       cardType: 'small',
       filterType: 'kitchen',
       icon: 'sun2',
@@ -143,6 +158,9 @@ module.exports = {
       subtitle: 'Включено',
     },
     {
+      value: 0.3,
+      min: 0,
+      max: 1,
       cardType: 'small',
       filterType: 'lights',
       icon: 'sun',
@@ -150,6 +168,9 @@ module.exports = {
       subtitle: 'Выключено',
     },
     {
+      value: 0.3,
+      min: 0,
+      max: 1,
       cardType: 'small',
       filterType: 'livingRoom',
       icon: 'sun2',

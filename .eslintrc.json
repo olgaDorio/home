@@ -18,8 +18,6 @@
     "no-multiple-empty-lines": ["error", {
       "max": 1
     }],
-    "no-param-reassign": ["error", {
-      "props": false
-    }]
+    "no-param-reassign": 0
   }
 }
