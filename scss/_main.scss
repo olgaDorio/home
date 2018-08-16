@@ -2,55 +2,54 @@
 
 .main {
   background-image: url(https://images.pexels.com/photos/1092364/pexels-photo-1092364.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
-  border-radius: 20px;
-  overflow: hidden;
-
   background-size: cover;
-
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  padding: 25px 25px 0 25px;
+  border-radius: 20px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   height: 335px;
+  overflow: hidden;
+  padding: 25px 25px 0 25px;
 
   @include tablet {
     flex-direction: column;
+    height: 100%;
     justify-content: space-between;
     padding: 20px;
-    height: 100%;
   }
 }
 
 .greeting {
+  color: $black;
+  font-family: $font-bold;
+  font-size: 27px;
+  font-weight: bold;
   min-height: 52px;
   width: 50%;
-  font-family: Arial-BoldMT;
-  font-size: 27px;
-  color: #333333;
 
   @include tablet {
-    width: 100%;
     height: auto;
+    width: 100%;
   }
 
   &__info {
-    font-family: ArialMT;
+    font-family: $font-normal;
     font-size: 14px;
   }
 }
 
 .temperature {
   &__wrapper {
-    width: 50%;
-    margin-top: 25px;
     display: flex;
+    margin-top: 25px;
+    width: 50%;
   }
 
   @include tablet {
     &__wrapper {
-      width: 100%;
       height: auto;
+      width: 100%;
     }
   }
 
@@ -59,45 +58,45 @@
   }
 
   &__location {
-    font-family: ArialMT;
+    color: $grey;
     font-size: 14px;
-    color: #858585;
   }
 
   &__value {
-    font-family: Arial-BoldMT;
-    font-size: 36px;
-    color: #333333;
+    color: $black;
     display: inline;
+    font-family: $font-bold;
+    font-size: 36px;
+    font-weight: bold;
     margin-right: 5px;
   }
 }
 
 .planned {
-  @include tablet {
-    width: 100%;
-    height: 120px;
-  }
-
-  width: 200px;
-  height: 310px;
   display: flex;
   flex-direction: column;
+  height: 310px;
   justify-content: space-between;
+  width: 200px;
+
+  @include tablet {
+    height: 120px;
+    width: 100%;
+  }
 
   &__container {
-    overflow: hidden;
-    display: grid;
-    grid-gap: 15px;
-    grid-auto-flow: row;
-    height: 270px;
-    padding-bottom: 15px;
     box-sizing: border-box;
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: 15px;
+    height: 270px;
+    overflow: hidden;
+    padding-bottom: 15px;
 
     @include tablet {
-      overflow: auto;
-      height: 120px;
       grid-auto-flow: column;
+      height: 120px;
+      overflow: auto;
       padding-bottom: 0;
     }
   }
@@ -107,11 +106,11 @@
       display: none;
     }
 
-    height: 40px;
-    width: 100%;
-    background: #F7F7F7;
+    background: $cream;
     border-radius: 20px 20px 0 0;
     display: flex;
+    height: 40px;
     justify-content: center;
+    width: 100%;
   }
 }

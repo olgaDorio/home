@@ -9,7 +9,8 @@
 }
 
 @keyframes slide-from-right {
-  from, to {
+  from,
+  to {
     transform: translateX(0);
   }
 
@@ -19,7 +20,8 @@
 }
 
 @keyframes slide-from-left {
-  from, to {
+  from,
+  to {
     transform: translateX(0);
   }
 
@@ -29,7 +31,8 @@
 }
 
 @keyframes slide-from-top {
-  from, to {
+  from,
+  to {
     transform: translateY(0);
   }
 
@@ -39,7 +42,8 @@
 }
 
 @keyframes slide-from-bottom {
-  from, to {
+  from,
+  to {
     transform: translateY(0);
   }
 
@@ -53,18 +57,18 @@
 }
 
 .fromright {
-  animation: slide-from-right cubic-bezier(0, 1.94, 1,-1.6) 0.2s;
+  animation: slide-from-right cubic-bezier(0, 1.94, 1, -1.6) 0.2s;
 }
 
 .fromleft {
-  animation: slide-from-left cubic-bezier(0, 1.94, 1,-1.6) 0.2s;
+  animation: slide-from-left cubic-bezier(0, 1.94, 1, -1.6) 0.2s;
 }
 
 .fromtop {
-  animation: slide-from-top cubic-bezier(0, 1.94, 1,-1.6) 0.2s;
+  animation: slide-from-top cubic-bezier(0, 1.94, 1, -1.6) 0.2s;
 }
 
 .frombottom {
-  animation: slide-from-bottom cubic-bezier(0, 1.94, 1,-1.6) 0.2s;
+  animation: slide-from-bottom cubic-bezier(0, 1.94, 1, -1.6) 0.2s;
 }
 

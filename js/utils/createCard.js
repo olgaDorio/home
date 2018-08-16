@@ -1,4 +1,4 @@
-import createIcon from './createIcon.js';
+import createIcon from './createIcon';
 
 module.exports = ({ icon, title, subtitle, cardType }) => { // eslint-disable-line
   const _card = document.createElement('div'); // eslint-disable-line

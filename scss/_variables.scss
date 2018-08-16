@@ -2,12 +2,16 @@ $icon: 24px;
 
 $light-grey: #F0F0F0;
 $dark-grey: #858585;
-$grey: #858585; // TODO
+$medium-grey: #C5BABA;
+$grey: #858585;
 $white: #FFFFFF;
+$dark-white: #FEFEFE;
 $cream: #F7F7F7;
 $black: #333333;
-
+$camel: #867947;
 $yellow: #FFD93E;
+
+$diameter: 220px;
 
 $small-desktop: 1370px;
 $tablet-width: 890px; // it will be better in 890px 768px
@@ -30,3 +34,6 @@ $mobile-width: 520px;
     @content;
   }
 }
+
+$font-bold: Arial-BoldMT, Arial, sans-serif;
+$font-normal: ArialMT, Arial, sans-serif;

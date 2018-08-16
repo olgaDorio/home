@@ -1,30 +1,41 @@
 .slider {
-  max-width: 100%;
-  width: 580px;
-  height: 60px;
   border-radius: 30px;
+  height: 60px;
+  max-width: 100%;
   position: relative;
+  width: 580px;
 
   &__min,
   &__max {
+    align-items: center;
+    bottom: 0;
+    color: #FFFFFF;
+    display: flex;
+    font-family: $font-bold;
+    font-size: 18px;
+    font-weight: bold;
+    pointer-events: none;
     position: absolute;
     top: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    font-family: Arial-BoldMT;
-    font-size: 18px;
-    color: #FFFFFF;
-    pointer-events: none;
     user-select: none;
   }
 
   &__min {
-    left: 20px;
+    align-items: center;
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    left: 0;
+    width: 60px;
   }
 
   &__max {
-    right: 20px;
+    align-items: center;
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    right: 0;
+    width: 60px;
   }
 
   &--sun {
@@ -37,16 +48,16 @@
 
   &__circle {
     -webkit-tap-highlight-color: transparent;
-    cursor: pointer;
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    box-shadow: inset 0 0 0 3px  rgba(51,51,51,0.10);
     border: 4px solid #FFFFFF;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 3px rgba($black, 0.10);
     box-sizing: border-box;
+    cursor: pointer;
+    height: 60px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 60px;
   }
 
   @include tablet {
@@ -54,30 +65,28 @@
     margin: auto;
     width: 60px;
 
-    &__min, &__max {
+    &__min,
+    &__max {
+      justify-content: center;
       left: 0;
       right: 0;
-      justify-content: center;
     }
 
     &__min {
-      top: 5%;
-      align-items: flex-start;
+      top: 0;
     }
 
     &__max {
-      bottom: 5%;
-      align-items: flex-end;
+      bottom: 0;
+      top: auto;
     }
 
     &--sun {
-      background-image: linear-gradient(#FFE682 2%, #FF9E00 98%);
+      background-image: linear-gradient(#FF9E00 2%, #FFE682 98%);
     }
 
     &--temperature {
       background-image: linear-gradient(#068FFF 2%, #FFD800 51%, #F76B1C 100%);
     }
   }
-
-
 }

@@ -1,27 +1,40 @@
-import animate from './utils/animate';
-import slider from './slider';
 import radial from './radial';
-import { create, createSlider, createControl, createPopupActions, createPopupFilters } from './utils/popupUtils';
+import slider from './slider';
+import { create, createControl, createPopupActions, createPopupFilters } from './utils/popupUtils';
+import createIcon from './utils/createIcon';
 
-module.exports = ({title, subtitle, value, min, max, type, sunny}) => {
-  const valueHTML = sunny ? create.div('sun', ['sun', 'sun--big']) : value;
+module.exports = (options) => {
+  const {
+    title, subtitle, type, sunny,
+  } = options;
 
-  const removePopup = () => {
-    document.body.style.overflow = 'auto';
-    animate.frombottom(popup);
-    popup.addEventListener('animationend', () => {
-      document.body.removeChild(popup);
-    });
+  const getPopupValue = () => {
+    if (sunny && type === 'slider') {
+      return createIcon('sun2', 'biggest');
+    }
+
+    const div = create.div('', 'flex-container');
+    const span = create.element('span', '+23');
+    span.innerHTML = '+23';
+    div.appendChild(span);
+    div.appendChild(createIcon('temperature2', 'biggest'));
+    return div;
   };
+
   const popup = create.div('', 'popup');
   const popupBody = create.div('', 'popup__body');
   const popupTitle = create.div(title, 'popup__title');
-  const popupValue = create.div(valueHTML, 'popup__value');
+  const popupValue = create.div(getPopupValue(), 'popup__value');
   const popupSubtitle = create.div(subtitle, 'popup__subtitle');
-  const popupFilters = createPopupFilters(sunny); //
+  const popupFilters = createPopupFilters(sunny);
+
+  const removePopup = () => {
+    document.body.style.overflow = 'auto';
+    document.body.removeChild(popup);
+  };
+
   const popupActions = createPopupActions(removePopup);
-  // const popupControl = createControl({type: 'slider', sunny, min, max, value});
-  const popupControl = createControl({type: 'radial', min, max, value});
+  const popupControl = createControl(options);
 
   popup.appendChild(popupBody);
   popup.appendChild(popupActions);
@@ -37,10 +50,12 @@ module.exports = ({title, subtitle, value, min, max, type, sunny}) => {
     }
   });
 
-  // filter: blur(4px);
   document.body.style.overflow = 'hidden';
-  document.body.appendChild(popup);
-  animate.fromtop(popup);
-  // slider(popupControl, value / (max - min), console.log);
-  radial(popupControl);
+  document.body.prepend(popup);
+
+  if (type === 'slider') {
+    slider(popupControl);
+  } else {
+    radial(popupControl);
+  }
 };

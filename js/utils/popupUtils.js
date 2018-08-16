@@ -1,3 +1,5 @@
+import createIcon from './createIcon';
+
 const create = {
   element(tag, innerHTML, classList) {
     const element = document.createElement(tag);
@@ -15,12 +17,16 @@ const create = {
   },
 };
 
-const createSlider = ({sunny, min, max}) => {
+const createSlider = ({ sunny }) => {
   const controlClassList = ['slider'];
   controlClassList.push(sunny ? 'slider--sun' : 'slider--temperature');
   const popupControl = create.div('', controlClassList);
-  const sliderMin = create.div(min, 'slider__min');
-  const sliderMax = create.div(max, 'slider__max');
+  const sliderMin = !sunny ? create.div(-10, 'slider__min') :
+    create.div(createIcon('sun-white', 'bigger'), 'slider__min');
+
+  const sliderMax = !sunny ? create.div('+33', 'slider__max') :
+    create.div(createIcon('sun-white', 'bigger'), 'slider__max');
+
   const sliderCircle = create.div('', 'slider__circle');
 
   popupControl.appendChild(sliderMin);
@@ -30,21 +36,21 @@ const createSlider = ({sunny, min, max}) => {
   return popupControl;
 };
 
-const createRadial = () => {
+const createRadial = () => { // and do something with them
   const wrapper = create.div('', 'radial');
-  const value = create.div('19', 'radial__value');
+  const value = create.div('+23', 'radial__value');
   const pointer = create.div('', 'radial__pointer');
   wrapper.appendChild(value);
   wrapper.appendChild(pointer);
   return wrapper;
-}
+};
 
-const createControl = ({type, sunny, min, max}) => {
-  if (type === 'slider') {
-    return createSlider({sunny, min, max});
-  } else {
-    return createRadial();
+const createControl = (options) => {
+  if (options.type === 'slider') {
+    return createSlider(options);
   }
+
+  return createRadial();
 };
 
 const createPopupActions = (callback) => {
@@ -75,10 +81,8 @@ const createPopupFilters = (sunny) => {
   return popupFilters;
 };
 
-
 module.exports = {
   create,
-  createSlider,
   createControl,
   createPopupActions,
   createPopupFilters,

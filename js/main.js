@@ -20,16 +20,3 @@ scenarios(scenariosData, scenariosContainer, scenariosNodesContainer);
 const devicesContainer = document.querySelector('.block:nth-child(3)');
 const devicesNodesContainer = document.querySelector('.devices');
 devices(devicesData, devicesContainer, devicesNodesContainer);
-
-// const min = -10;
-// const max = 30;
-// const onSliderChange = (percentage) => {
-//   const total = max - min;
-//   const value = Math.floor(percentage * total + min);
-//   const valueNode = document.querySelector('.popup__value');
-//   const textNode = valueNode.childNodes[0];
-//   textNode.textContent = `${value > 0 ? '+' : ''}${value}`;
-// }
-
-// slider(document.querySelector('.slider--sun'), onSliderChange);
-

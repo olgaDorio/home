@@ -7,18 +7,18 @@
     }
   }
 
+  box-sizing: border-box;
+  display: grid;
+  grid-gap: 15px;
   grid-template-columns: repeat(auto-fill, 200px);
   max-height: 335px;
   overflow: hidden;
-  width: 100%;
-  grid-gap: 15px;
   padding: 3px;
-  display: grid;
-  box-sizing: border-box;
+  width: 100%;
 
   @include tablet {
-    overflow: auto;
     grid-auto-flow: column;
     grid-template-rows: auto;
+    overflow: auto;
   }
 }

@@ -1,11 +1,9 @@
 .filter {
-  margin-left: 13px;
-
-  display: block; // or not
-
-  font-family: Arial-BoldMT;
+  color: black;
+  font-family: $font-bold;
   font-size: 13px;
-  color: #000000;
+  font-weight: bold;
+  margin-left: 13px;
 
   @include tablet {
     display: none;
@@ -17,8 +15,8 @@
 
   @include tablet {
     &--mobile {
-      margin-left: auto;
       display: block;
+      margin-left: auto;
     }
   }
 }

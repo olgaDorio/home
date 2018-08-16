@@ -1,8 +1,9 @@
 .title {
-  font-family: Arial-BoldMT;
-  font-size: 18px;
-  color: #333333;
-  margin-bottom: 20px;
-  display: flex;
   align-items: center;
+  color: $black;
+  display: flex;
+  font-family: $font-bold;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }

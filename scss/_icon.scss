@@ -1,7 +1,7 @@
 .icon {
-  width: 24px;
-  height: 24px;
   flex: 24px 0 0;
+  height: 24px;
+  width: 24px;
 }
 
 .icon--center {
@@ -9,17 +9,29 @@
 }
 
 .icon--big {
-  width: 26px;
-  height: 26px;
   flex: 26px 0 0;
+  height: 26px;
+  width: 26px;
 }
 
 .icon--medium {
-  width: 15px;
   height: 16px;
+  width: 15px;
 }
 
 .icon--small {
-  width: 13.3px;
   height: 16px;
+  width: 13.3px;
+}
+
+.icon--biggest {
+  flex: 43px 0 0;
+  height: 43px;
+  width: 43px;
+}
+
+.icon--bigger {
+  flex: 30px 0 0;
+  height: 30px;
+  width: 30px;
 }

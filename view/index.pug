@@ -6,27 +6,6 @@ head
 
   title Яндекс Дом
 body
-  //- .popup
-  //-   .popup__body
-  //-     .popup__title Elgato Eve Degree Connected
-  //-       .popup__value
-  //-         | +23
-  //-         svg.icon
-  //-           use(xlink:href="#temperature")
-  //-     .popup__subtitle Включено
-  //-     .popup__filters
-  //-       button.button.button--filter.button--active Вручную
-  //-       button.button.button--filter Холодно
-  //-       button.button.button--filter Тепло
-  //-       button.button.button--filter Жарко
-  //-     .slider.slider--sun
-  //-       .slider__min -10
-  //-       .slider__circle
-  //-       .slider__max +30
-  //-   .popup__actions
-  //-     button.button.button--yellow.button--round Применить
-  //-     button.button.button--white.button--round Закрыть
-
   include icons.pug
   header.header
     .logo
@@ -44,7 +23,7 @@ body
       a.link(href="#") Сценарии
 
   main.block__wrapper
-    .block.block--50
+    .block.block--half
       .title Главное
       .main
         .greeting
@@ -68,7 +47,7 @@ body
               svg.icon
                 use(xlink:href="#arrow")
 
-    .block.block--50
+    .block.block--half
       .title
         | Избранные сценарии
         .scenarios__controls
@@ -90,13 +69,11 @@ body
           button.button.button--filter(data-name="livingRoom") Зал
           button.button.button--filter(data-name="lights") Лампочки
           button.button.button--filter(data-name="cameras") Камеры
-        //- TODO
-        select.filter--mobile(hidden)
-          option Все
-          option Кухня
-          option(selected) Зал
-          option Лампочки
-          option Камеры
+
+        //- change selected value
+        .filter--mobile
+            .select Все
+
         .devices__controls
           button.button
             svg.icon.icon--medium

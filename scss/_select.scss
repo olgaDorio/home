@@ -1,0 +1,52 @@
+.select {
+  align-items: center;
+  background: $yellow;
+  border-radius: 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 30px;
+  justify-content: center;
+  padding: 0 16px;
+  font-size: 13px;
+}
+
+.radio {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  font-size: 15px;
+  height: 20px;
+  margin-bottom: 12px;
+  padding-left: 35px;
+  position: relative;
+  user-select: none;
+
+  &__input {
+    opacity: 0;
+    position: absolute;
+  }
+
+  &__checkmark {
+    align-items: center;
+    background: rgba($camel, 0.2);
+    border-radius: 50%;
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+  }
+
+  &:hover &__checkmark {
+    background: rgba($camel, 0.4);
+    transition: background 0.2s;
+  }
+
+  &__input:checked ~ .radio__checkmark {
+    background: $yellow;
+  }
+}

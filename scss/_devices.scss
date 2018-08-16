@@ -7,15 +7,15 @@
     }
   }
 
-  grid-auto-flow: column;
-  width: 100%;
-  grid-auto-columns: 200px;
-  grid-gap: 15px;
-  padding: 3px;
-  display: grid;
-  overflow: hidden;
   box-sizing: border-box;
+  display: grid;
+  grid-auto-columns: 200px;
+  grid-auto-flow: column;
+  grid-gap: 15px;
   grid-template-rows: auto;
+  overflow: hidden;
+  padding: 3px;
+  width: 100%;
 
   @include tablet {
     overflow: auto;

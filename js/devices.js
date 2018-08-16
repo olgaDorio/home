@@ -1,6 +1,20 @@
+import createOption from './utils/createOption';
 import createPopup from './popup';
 import mountNodes from './utils/mountNodes';
 import animate from './utils/animate';
+import { create } from './utils/popupUtils';
+
+const mobileSelect = document.querySelector('.select');
+
+const filterOptions = {
+  all: 'Все',
+  kitchen: 'Кухня',
+  livingRoom: 'Зал',
+  lights: 'Лампочки',
+  cameras: 'Камеры',
+};
+
+let selectedFilter = 'all';
 
 module.exports = (data, container, parent) => {
   const nextPageButton = container.querySelector('.devices__controls .button:last-child');
@@ -8,18 +22,13 @@ module.exports = (data, container, parent) => {
   const filterButtons = container.querySelector('.filter');
 
   const checkPaginationButtons = () => {
-    const { width, left } = parent.lastElementChild.getBoundingClientRect();
-    nextPageButton.disabled = parent.offsetWidth + parent.scrollLeft > width + left; // buggy
-    prevPageButton.disabled = !parent.scrollLeft;
+    const { offsetWidth, scrollWidth, scrollLeft } = parent;
+
+    nextPageButton.disabled = scrollWidth - scrollLeft === offsetWidth;
+    prevPageButton.disabled = !scrollLeft;
   };
 
   const goForward = () => {
-    const { width, left } = parent.lastElementChild.getBoundingClientRect(); // buggy
-
-    if (parent.offsetWidth + parent.scrollLeft > width + left) {
-      return;
-    }
-
     const newval = parent.scrollLeft + 215;
     const edge = parent.scrollWidth;
     const value = Math.min(edge, newval);
@@ -35,10 +44,6 @@ module.exports = (data, container, parent) => {
   };
 
   const goBack = () => {
-    if (!parent.scrollLeft) {
-      return;
-    }
-
     const newval = parent.scrollLeft - 215;
     const edge = 0;
     const value = Math.max(edge, newval);
@@ -53,45 +58,69 @@ module.exports = (data, container, parent) => {
     checkPaginationButtons();
   };
 
+  const mountCards = (cardsData) => {
+    const nodes = mountNodes(parent, cardsData, 'appear');
+    nodes.forEach((node) => {
+      node.addEventListener('click', () => {
+        const index = nodes.indexOf(node);
+        const cardData = cardsData[index];
+        const sunny = cardData.icon.includes('sun');
+        createPopup(Object.assign({ sunny }, cardData));
+      });
+    });
+    checkPaginationButtons();
+  };
+
+  const filterCards = (location) => {
+    const currentButton = [...filterButtons.children].find(b => b.dataset.name === location);
+    const activeButton = filterButtons.querySelector('.button--active');
+    const filteredData = data.filter(object => (
+      location === 'all' || object.filterType === location
+    ));
+    currentButton.classList.add('button--active');
+    activeButton.classList.remove('button--active');
+    selectedFilter = location;
+    mountCards(filteredData);
+    mobileSelect.innerHTML = filterOptions[location];
+  };
+
   const filter = (e) => {
     if (!e.target.classList.contains('button')) {
       return;
     }
 
-    const { name } = e.target.dataset;
-    const currentlyActive = filterButtons.querySelector('.button--active');
-    const filtered = data.filter(object => (
-      name === 'all' || object.filterType === name
-    ));
-
-    currentlyActive.classList.remove('button--active');
-    e.target.classList.add('button--active');
-
-    mountNodes(parent, filtered, 'appear');
-    checkPaginationButtons();
+    filterCards(e.target.dataset.name);
   };
 
-  const initPopup = (card) => {
-    const { title, subtitle, value, min, max } = card;
-    const sunny = card.icon.includes('sun')
+  const createFilterPopup = () => {
+    const popup = create.div('', 'popup');
+    const popupBody = create.div('', ['popup__body', 'popup--small']);
+    const removePopup = () => { document.body.removeChild(popup); };
+    const onClick = (e) => { if (e.target.classList.contains('popup')) removePopup(); };
 
-    createPopup({
-      title, subtitle, sunny, value, min, max,
+    Object.keys(filterOptions).forEach((key) => {
+      const label = createOption(key, filterOptions[key], key === selectedFilter);
+      const input = label.querySelector('input');
+
+      const onChange = () => {
+        filterCards(input.value);
+        removePopup();
+      };
+
+      input.addEventListener('change', onChange);
+      popupBody.appendChild(label);
     });
+
+    popup.appendChild(popupBody);
+    popup.addEventListener('click', onClick);
+    document.body.prepend(popup);
   };
 
-  const cards = mountNodes(parent, data);
-  checkPaginationButtons();
-
-  cards.forEach((card) => {
-    card.addEventListener('click', () => {
-      const index = cards.indexOf(card);
-      initPopup(data[index]); // TODO get from data
-    });
-  });
+  mountCards(data);
 
   nextPageButton.addEventListener('click', goForward);
   prevPageButton.addEventListener('click', goBack);
   filterButtons.addEventListener('click', filter);
   window.addEventListener('resize', checkPaginationButtons);
+  document.querySelector('.select').addEventListener('click', createFilterPopup);
 };

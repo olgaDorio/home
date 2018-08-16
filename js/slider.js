@@ -1,4 +1,5 @@
-module.exports = (node, initial=0, callback = () => {}) => {
+module.exports = (node) => {
+  let currentValue = 0.3;
   const circle = node.querySelector('.slider__circle');
   const min = 0;
   const isHorizontal = () => node.offsetWidth > node.offsetHeight;
@@ -9,13 +10,19 @@ module.exports = (node, initial=0, callback = () => {}) => {
     return node.offsetHeight - circle.offsetHeight;
   };
 
-  circle.style[isHorizontal() ? 'left': 'right'] = `${initial * max()}px`;
+  const setStyle = () => {
+    const now = isHorizontal() ? 'left' : 'top';
+    const prev = isHorizontal() ? 'top' : 'left';
+    circle.style[prev] = 0;
+    circle.style[now] = `${currentValue * max()}px`;
+  };
 
   let down = false;
   let diff = 0;
 
-  const getPercentage = (currentPosition) => {
-    callback(currentPosition / max());
+  const updatePosition = (currentPosition) => {
+    currentValue = currentPosition / max();
+    setStyle();
   };
 
   const getPosition = (e) => {
@@ -30,8 +37,7 @@ module.exports = (node, initial=0, callback = () => {}) => {
     e.preventDefault();
     if (!down) return;
     const currentPosition = getPosition(e);
-    circle.style[isHorizontal() ? 'left' : 'top'] = `${currentPosition}px`;
-    getPercentage(currentPosition);
+    updatePosition(currentPosition);
   };
 
   const stop = (e) => {
@@ -40,21 +46,21 @@ module.exports = (node, initial=0, callback = () => {}) => {
     }
     down = false;
     const currentPosition = getPosition(e);
-    circle.style[isHorizontal() ? 'left' : 'top'] = `${currentPosition}px`;
-    getPercentage(currentPosition);
+    updatePosition(currentPosition);
     diff = 0;
   };
 
   const start = (e) => {
     down = true;
-    console.log(e.offsetX);
-    diff = e.offsetX || 30; // TODO
-    console.log(diff);
+    diff = e.offsetX || 30;
   };
 
-  circle.addEventListener("touchstart", start);
-  node.addEventListener("touchend", stop);
-  node.addEventListener("touchmove", move);
+  setStyle();
+
+  window.addEventListener('resize', setStyle);
+  circle.addEventListener('touchstart', start);
+  node.addEventListener('touchend', stop);
+  node.addEventListener('touchmove', move);
 
   circle.addEventListener('mousedown', start);
   node.addEventListener('mousemove', move);

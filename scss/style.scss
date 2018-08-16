@@ -1,27 +1,29 @@
-@import "_variables.scss";
-@import "_navigation.scss";
-@import "_block.v2.scss";
-@import "_icon.scss";
-@import "_main.scss";
-@import "_button.scss";
-@import "_card.scss";
-@import "_title.scss";
-@import "_scenarios.scss";
-@import "_filter.scss";
-@import "_devices.scss";
-@import "_link.scss";
-@import "_animations.scss";
-@import "_popup.scss";
-@import "_slider.scss";
-@import "_radial.scss";
+@import "_variables";
+@import "_navigation";
+@import "_block";
+@import "_icon";
+@import "_main";
+@import "_button";
+@import "_card";
+@import "_title";
+@import "_scenarios";
+@import "_filter";
+@import "_devices";
+@import "_link";
+@import "_animations";
+@import "_popup";
+@import "_slider";
+@import "_radial";
+@import "_select";
 
 body {
-  margin: 0;
+  font-family: $font-normal;
   height: 100vh;
+  margin: 0;
 
   @include tablet {
-    min-height: 100vh;
     height: 100%;
+    min-height: 100vh;
     overflow: auto;
   }
 }
@@ -30,42 +32,44 @@ body {
   margin-left: auto !important;
 }
 
-.header {
-  font-size: 16px;
-  font-family: Arial-BoldMT;
-
-  z-index: 2;
-  background: white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  height: 90px;
-  padding: 0 40px;
-
-  display: flex;
+.flex-container {
   align-items: center;
+  display: flex;
+  justify-content: center;
+}
 
+.header {
+  align-items: center;
+  background: white;
+  border-bottom: 1px solid $light-grey;
   box-sizing: border-box;
-  border-bottom: 1px solid #F0F0F0;
+  display: flex;
+  font-family: $font-bold;
+  font-size: 16px;
+  font-weight: bold;
+  height: 90px;
+  left: 0;
+  padding: 0 40px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 2;
 
   @include tablet {
     padding: 0 20px;
   }
 }
 
-
 .logo {
-  width: 108px;
-  height: 27px;
-  background-size: cover;
   background-image: url(./../images/logo.png);
-  margin-right: 26px; // TODO: think about improving this by giving them same parent class
+  background-size: cover;
+  height: 27px;
+  margin-right: 26px;
+  width: 108px;
 }
 
 .link {
-  margin-left: 26px; // TODO: think about improving this by giving them same parent class
+  margin-left: 26px;
 }
 
 .copyright {
@@ -73,21 +77,18 @@ body {
 }
 
 .footer {
-  font-size: 12px;
-  font-family: ArialMT;
-  display: flex;
   align-items: center;
-
-  height: 100px;
-  padding: 0 40px;
-
-  position: fixed;
   bottom: 0;
+  display: flex;
+  font-size: 12px;
+  height: 100px;
   left: 0;
+  padding: 0 40px;
+  position: fixed;
   right: 0;
 
   @include tablet {
-    position: relative;
     padding: 0 20px;
+    position: relative;
   }
 }

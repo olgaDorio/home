@@ -33,4 +33,5 @@ module.exports = (data, container, parent) => {
 
   checkButton();
   mountNodes(parent, data);
+  parent.scrollTop = 0;
 };

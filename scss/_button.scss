@@ -15,18 +15,17 @@
   pointer-events: auto;
   text-decoration: initial;
   text-transform: capitalize;
-  box-sizing: border-box;
   transition: all 0.2s;
 
   &:disabled {
-    pointer-events: none;
     opacity: 0.2;
+    pointer-events: none;
   }
 
   &--filter {
     background: $cream;
+    border-radius: 20px;
     color: black;
-    border-radius: 20px; // TODO
     padding: 8px 15px;
   }
 
@@ -40,7 +39,7 @@
   }
 
   &--white {
-    background: white;
+    background: $white;
   }
 
   &--yellow {
@@ -48,6 +47,6 @@
   }
 
   &--round {
-    border-radius: 20px; // TODO
+    border-radius: 20px;
   }
 }

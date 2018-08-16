@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ExtraneousFileCleanupPlugin = require('webpack-extraneous-file-cleanup-plugin');
 const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const dir = "public";
 
@@ -108,5 +109,11 @@ if (process.env.NODE_ENV === 'production') {
         formater: require('eslint-friendly-formatter'),
       }
     }
-  ])
+  ]);
+
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new StyleLintPlugin({
+      files: ['**/*.scss'],
+    }),
+  ]);
 }

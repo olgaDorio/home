@@ -1,14 +1,14 @@
 .card {
-  background: #F7F7F7;
+  background: $cream;
   border-radius: 20px;
-  width: 200px;
-  min-width: 200px;
-  height: 120px;
-  min-height: 120px;
-  padding: 14px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  height: 120px;
+  min-height: 120px;
+  min-width: 200px;
+  padding: 14px;
+  width: 200px;
 
   &--small {
     height: 100px;
@@ -16,21 +16,21 @@
   }
 
   &--active {
-    background: #FFFFFF;
-    box-shadow: 0 2px 6px 0 rgba(#c5baba,0.50);
+    background: $white;
     border-radius: 20px;
+    box-shadow: 0 2px 6px 0 rgba($medium-grey, 0.5);
   }
 
   &__title {
-    margin-top: auto;
-    font-family: Arial-BoldMT;
+    color: $black;
+    font-family: $font-bold;
     font-size: 14px;
-    color: #333333;
+    font-weight: bold;
+    margin-top: auto;
   }
 
   &__subtitle {
-    font-family: ArialMT;
+    color: $grey;
     font-size: 12px;
-    color: #858585;
   }
 }
