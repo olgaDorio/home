@@ -27,7 +27,7 @@ module.exports = (node) => {
 
   const getPosition = (e) => {
     const event = e[isHorizontal() ? 'x' : 'y'] || e.changedTouches[0][isHorizontal() ? 'clientX' : 'clientY'];
-    const slider = node.getBoundingClientRect()[isHorizontal() ? 'x' : 'y'];
+    const slider = node.getBoundingClientRect()[isHorizontal() ? 'left' : 'top'];
     const relative = event - slider;
 
     return Math.min(Math.max(relative - diff, min), max());
@@ -37,6 +37,7 @@ module.exports = (node) => {
     e.preventDefault();
     if (!down) return;
     const currentPosition = getPosition(e);
+
     updatePosition(currentPosition);
   };
 
@@ -52,17 +53,17 @@ module.exports = (node) => {
 
   const start = (e) => {
     down = true;
-    diff = e.offsetX || 30;
+    diff = e.target === circle ? e.offsetX || 30 : 30;
   };
 
   setStyle();
 
   window.addEventListener('resize', setStyle);
-  circle.addEventListener('touchstart', start);
+  node.addEventListener('touchstart', start);
   node.addEventListener('touchend', stop);
   node.addEventListener('touchmove', move);
 
-  circle.addEventListener('mousedown', start);
+  node.addEventListener('mousedown', start);
   node.addEventListener('mousemove', move);
   node.addEventListener('mouseup', stop);
 };

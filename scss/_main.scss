@@ -95,6 +95,7 @@
 
     @include tablet {
       grid-auto-flow: column;
+      grid-column-gap: 15px;
       height: 120px;
       overflow: auto;
       padding-bottom: 0;

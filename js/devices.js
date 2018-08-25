@@ -24,7 +24,7 @@ module.exports = (data, container, parent) => {
   const checkPaginationButtons = () => {
     const { offsetWidth, scrollWidth, scrollLeft } = parent;
 
-    nextPageButton.disabled = scrollWidth - scrollLeft === offsetWidth;
+    nextPageButton.disabled = Math.ceil(scrollWidth - scrollLeft) === offsetWidth;
     prevPageButton.disabled = !scrollLeft;
   };
 

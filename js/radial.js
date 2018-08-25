@@ -2,14 +2,6 @@ module.exports = (circle) => {
   let isDragging = false;
   const pointer = circle.querySelector('.radial__pointer');
 
-  const start = () => {
-    isDragging = true;
-  };
-
-  const stop = () => {
-    isDragging = false;
-  };
-
   const move = (e) => {
     let touch;
 
@@ -38,6 +30,16 @@ module.exports = (circle) => {
       angle = Math.round(angle);
       pointer.style.transform = `rotate(${angle}deg)`;
     }
+  };
+
+  const start = (e) => {
+    isDragging = true;
+    move(e);
+  };
+
+  const stop = () => {
+    isDragging = false;
+    console.log('stop');
   };
 
   circle.addEventListener('mousedown', start);
