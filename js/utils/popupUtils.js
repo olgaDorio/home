@@ -38,8 +38,20 @@ const createSlider = ({ sunny }) => {
 
 const createRadial = () => { // and do something with them
   const wrapper = create.div('', 'radial');
+  const linesWrapper = create.div('', 'radial__lines');
+  const lines = Array.from({ length: 120 }, (v, i) => {
+    const line = create.div('', 'radial__line');
+    const angle = i * 3;
+    line.style.transform = `rotate(${angle <= 180 ? angle : angle - 360}deg)`;
+    return line;
+  });
   const value = create.div('+23', 'radial__value');
   const pointer = create.div('', 'radial__pointer');
+
+  lines.forEach((line) => {
+    linesWrapper.appendChild(line);
+  });
+  wrapper.appendChild(linesWrapper);
   wrapper.appendChild(value);
   wrapper.appendChild(pointer);
   return wrapper;
@@ -68,8 +80,8 @@ const createPopupActions = (callback) => {
 
 const createPopupFilters = (sunny) => {
   const filterTitles = [
+    ['Вручную', 'Холодно', 'Тепло'],
     ['Вручную', 'Дневной свет', 'Вечерний свет', 'Рассвет'],
-    ['Вручную', 'Холодно', 'Тепло', 'Жарко'],
   ];
   const popupFilters = create.div('', 'popup__filters');
   filterTitles[Number(!!sunny)].forEach((innerHTML, i) => {

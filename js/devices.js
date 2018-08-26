@@ -81,7 +81,7 @@ module.exports = (data, container, parent) => {
     activeButton.classList.remove('button--active');
     selectedFilter = location;
     mountCards(filteredData);
-    mobileSelect.innerHTML = filterOptions[location];
+    mobileSelect.childNodes[0].data = filterOptions[location];
   };
 
   const filter = (e) => {
@@ -93,7 +93,7 @@ module.exports = (data, container, parent) => {
   };
 
   const createFilterPopup = () => {
-    const popup = create.div('', 'popup');
+    const popup = create.div('', ['popup', 'popup--filter']);
     const popupBody = create.div('', ['popup__body', 'popup--small']);
     const removePopup = () => { document.body.removeChild(popup); };
     const onClick = (e) => { if (e.target.classList.contains('popup')) removePopup(); };

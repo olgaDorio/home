@@ -1,6 +1,6 @@
 import createIcon from './createIcon';
 
-module.exports = ({ icon, title, subtitle, cardType }) => { // eslint-disable-line
+module.exports = ({ icon, title, subtitle, cardType, isActive }) => { // eslint-disable-line
   const _card = document.createElement('div'); // eslint-disable-line
   const _icon = createIcon(icon); // eslint-disable-line
   const _title = document.createElement('div'); // eslint-disable-line
@@ -10,6 +10,10 @@ module.exports = ({ icon, title, subtitle, cardType }) => { // eslint-disable-li
   _card.appendChild(_title);
   _card.classList.add('card');
   _title.classList.add('card__title');
+
+  if (isActive) {
+    _card.classList.add('card--active');
+  }
 
   if (cardType) {
     _card.classList.add(`card--${cardType}`);

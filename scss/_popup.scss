@@ -1,7 +1,19 @@
-@keyframes popup {
+@keyframes popuplb {
   from {
     opacity: 0.5;
     transform: translate(-100px, 100px) scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0) scale(1);
+  }
+}
+
+@keyframes popuprb {
+  from {
+    opacity: 0.5;
+    transform: translate(100px, 100px) scale(0.8);
   }
 
   to {
@@ -19,7 +31,7 @@
   flex-direction: column;
   justify-content: center;
   left: 0;
-  padding: 10px;
+  padding: 20px;
   position: fixed;
   right: 0;
   top: 0;
@@ -36,12 +48,23 @@
 
   &__body,
   &__actions {
-    animation: popup 0.2s;
+    animation: popuplb 0.2s;
     max-width: 630px;
     width: 100%;
   }
 
+  &__actions {
+    font-family: $font-bold;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &--filter &__body {
+    animation: popuprb 0.2s;
+  }
+
   &__body {
+    overflow: auto;
     background: $white;
     border-radius: 20px;
     box-sizing: border-box;
@@ -64,6 +87,7 @@
     margin-top: 20px;
 
     @include tablet {
+      margin-top: 15px;
       display: flex;
       flex-direction: column;
       height: 20%;
@@ -106,12 +130,14 @@
   &__filters {
     display: flex;
     margin-bottom: 25px;
+    font-size: 13px;
+    font-family: $font-bold;
+    font-weight: bold;
     overflow: auto;
 
     @include tablet {
       display: flex;
       flex-shrink: 0;
-      font-size: 13px;
       overflow: auto;
     }
   }

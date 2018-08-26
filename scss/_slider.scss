@@ -47,7 +47,6 @@
   }
 
   &__circle {
-    -webkit-tap-highlight-color: transparent;
     border: 4px solid #FFFFFF;
     border-radius: 50%;
     box-shadow: inset 0 0 0 3px rgba($black, 0.10);
@@ -56,6 +55,7 @@
     height: 60px;
     left: 0;
     position: absolute;
+    -webkit-tap-highlight-color: transparent;
     top: 0;
     width: 60px;
   }
@@ -73,12 +73,12 @@
     }
 
     &__min {
-      top: 0;
+      bottom: 0;
+      top: auto;
     }
 
     &__max {
-      bottom: 0;
-      top: auto;
+      top: 0;
     }
 
     &--sun {
@@ -86,7 +86,7 @@
     }
 
     &--temperature {
-      background-image: linear-gradient(#068FFF 2%, #FFD800 51%, #F76B1C 100%);
+      background-image: linear-gradient(#F76B1C 2%, #FFD800 51%, #068FFF 100%);
     }
   }
 }

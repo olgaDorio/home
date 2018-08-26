@@ -36,6 +36,7 @@
   &__info {
     font-family: $font-normal;
     font-size: 14px;
+    font-weight: normal;
   }
 }
 
@@ -109,9 +110,11 @@
 
     background: $cream;
     border-radius: 20px 20px 0 0;
+    box-sizing: border-box;
     display: flex;
     height: 40px;
     justify-content: center;
+    padding-top: 13px;
     width: 100%;
   }
 }

@@ -26,7 +26,6 @@ module.exports = (options) => {
   const popupTitle = create.div(title, 'popup__title');
   const popupValue = create.div(getPopupValue(), 'popup__value');
   const popupSubtitle = create.div(subtitle, 'popup__subtitle');
-  const popupFilters = createPopupFilters(sunny);
 
   const removePopup = () => {
     document.body.style.overflow = 'auto';
@@ -40,7 +39,9 @@ module.exports = (options) => {
   popup.appendChild(popupActions);
   popupBody.appendChild(popupTitle);
   popupBody.appendChild(popupSubtitle);
-  popupBody.appendChild(popupFilters);
+  if (options.type === 'slider') {
+    popupBody.appendChild(createPopupFilters(sunny));
+  }
   popupBody.appendChild(popupControl);
   popupTitle.appendChild(popupValue);
 

@@ -14,6 +14,7 @@ module.exports = {
       cardType: 'small',
       icon: 'sun',
       title: 'Сделать пол тёплым во всей квартире',
+      isActive: true,
     },
     {
       cardType: 'small',

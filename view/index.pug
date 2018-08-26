@@ -44,7 +44,7 @@ body
 
           .planned__trigger
             button.button
-              svg.icon
+              svg.icon.icon--medium-sq
                 use(xlink:href="#arrow")
 
     .block.block--half
@@ -72,7 +72,10 @@ body
 
         //- change selected value
         .filter--mobile
-            .select Все
+          .select
+            | Все
+            svg.icon.icon--tiny
+              use(xlink:href="#down")
 
         .devices__controls
           button.button

@@ -1,12 +1,13 @@
 .radial {
   align-items: center;
-  background-image: url(../images/oval.png);
   border-radius: 50%;
   box-sizing: border-box;
   display: flex;
   height: $diameter;
   justify-content: center;
   margin: auto;
+  min-height: $diameter;
+  min-width: $diameter;
   position: relative;
   width: $diameter;
 
@@ -61,6 +62,23 @@
       transform: translate3d(-25%, -25%, 0);
       width: 0;
     }
+  }
 
+  &__lines {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  &__line {
+    background: black;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    transform-origin: right;
+    width: 50%;
   }
 }
