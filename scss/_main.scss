@@ -86,13 +86,11 @@
   }
 
   &__container {
-    box-sizing: border-box;
     display: grid;
     grid-auto-flow: row;
     grid-row-gap: 15px;
     height: 270px;
     overflow: hidden;
-    padding-bottom: 15px;
 
     @include tablet {
       grid-auto-flow: column;
@@ -100,6 +98,19 @@
       height: 120px;
       overflow: auto;
       padding-bottom: 0;
+    }
+  }
+
+  &__container::after {
+    background: transparent;
+    content: "";
+    display: block;
+    height: 1px;
+    margin-top: -1px;
+    width: 100%;
+
+    @include tablet {
+      display: none;
     }
   }
 

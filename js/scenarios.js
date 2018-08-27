@@ -4,8 +4,8 @@ import mountNodes from './utils/mountNodes';
 module.exports = (data, container, parent) => {
   const prevButton = container.querySelector('.scenarios__controls .button:nth-child(1)');
   const nextButton = container.querySelector('.scenarios__controls .button:nth-child(2)');
-  const magicNumber = 115;
-  const scrollStep = 345;
+  const cardHeight = 115;
+  const scrollStep = 3 * cardHeight;
 
   const canOpenNextPage = () => {
     const { scrollHeight, offsetHeight, scrollTop } = parent;
@@ -13,7 +13,7 @@ module.exports = (data, container, parent) => {
   };
 
   const canOpenPrevPage = () => (
-    parent.scrollTop < magicNumber
+    parent.scrollTop < cardHeight
   );
 
   const checkButtons = () => {
