@@ -1,8 +1,7 @@
-import createOption from './utils/createOption';
-import createPopup from './popup';
-import mountNodes from './utils/mountNodes';
+import create from './utils/create';
 import animate from './utils/animate';
-import { create } from './utils/popupUtils';
+import createPopup from './utils/popup';
+import mountNodes from './utils/mountNodes';
 
 const mobileSelect = document.querySelector('.select');
 
@@ -74,11 +73,13 @@ module.exports = (data, container, parent) => {
   const filterCards = (location) => {
     const currentButton = [...filterButtons.children].find(b => b.dataset.name === location);
     const activeButton = filterButtons.querySelector('.button--active');
+
     const filteredData = data.filter(object => (
       location === 'all' || object.filterType === location
     ));
+
     currentButton.classList.add('button--active');
-    activeButton.classList.remove('button--active');
+    if (activeButton) activeButton.classList.remove('button--active');
     selectedFilter = location;
     mountCards(filteredData);
     mobileSelect.childNodes[0].data = filterOptions[location];
@@ -99,8 +100,8 @@ module.exports = (data, container, parent) => {
     const onClick = (e) => { if (e.target.classList.contains('popup')) removePopup(); };
 
     Object.keys(filterOptions).forEach((key) => {
-      const label = createOption(key, filterOptions[key], key === selectedFilter);
-      const input = label.querySelector('input');
+      const radioInput = create.radioInput(key, filterOptions[key], key === selectedFilter);
+      const input = radioInput.querySelector('input');
 
       const onChange = () => {
         filterCards(input.value);
@@ -108,7 +109,7 @@ module.exports = (data, container, parent) => {
       };
 
       input.addEventListener('change', onChange);
-      popupBody.appendChild(label);
+      popupBody.appendChild(radioInput);
     });
 
     popup.appendChild(popupBody);

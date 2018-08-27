@@ -1,8 +1,8 @@
-import mobileNavigation from './mobileNavigation';
-import { scenariosData, devicesData, plannedData } from './data';
 import devices from './devices';
 import planned from './planned';
 import scenarios from './scenarios';
+import mobileNavigation from './mobileNavigation';
+import { scenariosData, devicesData, plannedData } from './data';
 
 mobileNavigation();
 

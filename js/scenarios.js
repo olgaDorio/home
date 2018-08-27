@@ -1,5 +1,5 @@
-import mountNodes from './utils/mountNodes';
 import animate from './utils/animate';
+import mountNodes from './utils/mountNodes';
 
 module.exports = (data, container, parent) => {
   const prevButton = container.querySelector('.scenarios__controls .button:nth-child(1)');

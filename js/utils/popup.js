@@ -1,7 +1,7 @@
-import radial from './radial';
-import slider from './slider';
-import { create, createControl, createPopupActions, createPopupFilters } from './utils/popupUtils';
-import createIcon from './utils/createIcon';
+import create from './create';
+import Slider from './slider';
+import Radial from './radial';
+import { createPopupActions, createPopupFilters } from './popupUtils';
 
 module.exports = (options) => {
   const {
@@ -10,14 +10,14 @@ module.exports = (options) => {
 
   const getPopupValue = () => {
     if (sunny && type === 'slider') {
-      return createIcon('sun2', 'biggest');
+      return create.icon('sun2', 'biggest');
     }
 
     const div = create.div('', 'flex-container');
     const span = create.element('span', '+23');
     span.innerHTML = '+23';
     div.appendChild(span);
-    div.appendChild(createIcon('temperature2', 'biggest'));
+    div.appendChild(create.icon('temperature2', 'biggest'));
     return div;
   };
 
@@ -27,13 +27,15 @@ module.exports = (options) => {
   const popupValue = create.div(getPopupValue(), 'popup__value');
   const popupSubtitle = create.div(subtitle, 'popup__subtitle');
 
+  const popupControl = type === 'slider' ? new Slider(options.sunny) : new Radial();
+
   const removePopup = () => {
     document.body.style.overflow = 'auto';
     document.body.removeChild(popup);
+    popupControl.destroyed();
   };
 
   const popupActions = createPopupActions(removePopup);
-  const popupControl = createControl(options);
 
   popup.appendChild(popupBody);
   popup.appendChild(popupActions);
@@ -42,7 +44,7 @@ module.exports = (options) => {
   if (options.type === 'slider') {
     popupBody.appendChild(createPopupFilters(sunny));
   }
-  popupBody.appendChild(popupControl);
+  popupBody.appendChild(popupControl.node);
   popupTitle.appendChild(popupValue);
 
   popup.addEventListener('click', (e) => {
@@ -53,10 +55,5 @@ module.exports = (options) => {
 
   document.body.style.overflow = 'hidden';
   document.body.prepend(popup);
-
-  if (type === 'slider') {
-    slider(popupControl);
-  } else {
-    radial(popupControl);
-  }
+  popupControl.mounted();
 };

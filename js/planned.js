@@ -1,5 +1,5 @@
-import mountNodes from './utils/mountNodes';
 import animate from './utils/animate';
+import mountNodes from './utils/mountNodes';
 
 module.exports = (data, container, parent) => {
   let down = true;
